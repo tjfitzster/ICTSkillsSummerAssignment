@@ -1,6 +1,6 @@
 # Assignment - ReactJS app.
 
-Name: ... your name ...
+Name: TJ FITZPATRICK
 
 ## Overview.
 

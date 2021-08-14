@@ -8,13 +8,30 @@ export const getMovies = async () => {
   return response.json();
 };
 
-export const getTvshows = async () => {
+export const getlatestMovies = async () => {
   const response = await fetch(
-    ' https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1'
-    
-    //'https://api.themoviedb.org/3/tv/3?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US'
-    // `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
-   // https://api.themoviedb.org/3/tv/3?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1&language=en-US
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+  );
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
+
+
+export const getTopRatedMovies = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+  );
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
+
+export const getPopularMovies = async () => {
+  const response = await fetch(
+    'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
   );
   if (!response.ok) {
     throw new Error(response.json().message);
@@ -52,19 +69,6 @@ export const getMovie = async ( args ) => {
     const [prefix, { id }] = queryKey;
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-    if (!response.ok) {
-      throw new Error(response.json().message);
-    }
-    return response.json();
-  };
-
-  export const getTvImages = async ({queryKey}) => {
-    // eslint-disable-next-line no-unused-vars
-    const [prefix, { id }] = queryKey;
-    const response = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-      
     )
     if (!response.ok) {
       throw new Error(response.json().message);

@@ -11,6 +11,7 @@ export const getMovies = async () => {
 export const getlatestMovies = async () => {
   const response = await fetch(
     'https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1'
+    
   );
   if (!response.ok) {
     throw new Error(response.json().message);
@@ -31,7 +32,9 @@ export const getTopRatedMovies = async () => {
 
 export const getPopularMovies = async () => {
   const response = await fetch(
-    'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
+    //'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
+   
+
   );
   if (!response.ok) {
     throw new Error(response.json().message);

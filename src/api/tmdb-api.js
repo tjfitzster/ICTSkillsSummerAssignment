@@ -83,7 +83,7 @@ export const getMovie = async ( args ) => {
     // eslint-disable-next-line no-unused-vars
     const [prefix, { id }] = queryKey;
     const response = await fetch(
-     // `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+     //  'https://api.themoviedb.org/3/movie/550988/credits?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1'
       'https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}'
     )
     if (!response.ok) {

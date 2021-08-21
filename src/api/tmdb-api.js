@@ -1,3 +1,13 @@
+import axios from 'axios';
+
+const url = 'https://api.themoviedb.org/3';
+const nowPlayingUrl = `${url}/movie/now_playing`;
+const topratedUrl = `${url}/movie/top_rated`;
+const movieUrl = `${url}/movie`;
+const genreUrl = `${url}/genre/movie/list`;
+const moviesUrl = `${url}/discover/movie`;
+const personUrl = `${url}/trending/person/week`;
+
 export const getMovies = async () => {
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -30,6 +40,19 @@ export const getTopRatedMovies = async () => {
   return response.json();
 };
 
+
+export const getPopularTV = async () => {
+  const response = await fetch(
+   // 'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
+    'https://api.themoviedb.org/3/tv/popular?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1&language=en-US&page=1&include_adult=false&page=1'
+
+  );
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
+
 export const getPopularMovies = async () => {
   const response = await fetch(
    // 'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
@@ -43,8 +66,6 @@ export const getPopularMovies = async () => {
 };
   
 export const getMovie = async ( args ) => {
-  // console.log(args)
-  // eslint-disable-next-line no-unused-vars
   const [prefix, { id }] = args.queryKey;
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
@@ -122,3 +143,4 @@ if (!response.ok) {
     }
     return response.json();
   };
+

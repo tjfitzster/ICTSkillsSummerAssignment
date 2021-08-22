@@ -7,6 +7,8 @@ const genreUrl = `${url}/genre/movie/list`;
 const moviesUrl = `${url}/discover/movie`;
 const personUrl = `${url}/trending/person/week`;
 
+
+
 export const getMovies = async () => {
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -19,7 +21,7 @@ export const getMovies = async () => {
 
 export const getlatestMovies = async () => {
   const response = await fetch(
-    'https://api.themoviedb.org/3/movie/latest?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1&language=en-US&include_adult=false&page=1'
+    `https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
     
   );
   if (!response.ok) {
@@ -42,8 +44,8 @@ export const getTopRatedMovies = async () => {
 
 export const getPopularTV = async () => {
   const response = await fetch(
-   // 'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
-    'https://api.themoviedb.org/3/tv/popular?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1&language=en-US&page=1&include_adult=false&page=1'
+    `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+   
 
   );
   if (!response.ok) {
@@ -54,8 +56,7 @@ export const getPopularTV = async () => {
 
 export const getPopularMovies = async () => {
   const response = await fetch(
-   // 'https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1'
-    'https://api.themoviedb.org/3/movie/popular?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1&language=en-US&include_adult=false&page=1'
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
 
   );
   if (!response.ok) {
@@ -125,8 +126,7 @@ export const getTvShow = async ( args ) => {
     // eslint-disable-next-line no-unused-vars
     const [prefix, { id }] = queryKey;
     const response = await fetch(
-     //  'https://api.themoviedb.org/3/movie/550988/credits?api_key=e78ce8d6f8fd74b6fcf1433d7b690ec1'
-      'https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}'
+     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
     )
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -180,7 +180,7 @@ if (!response.ok) {
     try {
         const { data } = await axios.get(nowPlayingUrl, {
             params: {
-                api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+                api_key: `${process.env.REACT_APP_TMDB_KEY}`,
                 language: 'en_US',
                 page: 1
             }
@@ -205,7 +205,7 @@ export const fetchGenre = async () => {
   try {
       const { data } = await axios.get(genreUrl, {
           params: {
-              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key: `${process.env.REACT_APP_TMDB_KEY}`,
               language: 'en_US',
               page: 1
           }
@@ -223,7 +223,7 @@ export const fetchMovieByGenre = async (genre_id) => {
   try {
       const { data } = await axios.get(moviesUrl, {
           params: {
-              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key: `${process.env.REACT_APP_TMDB_KEY}`,
               language: 'en_US',
               page: 1,
               with_genres: genre_id
@@ -249,7 +249,7 @@ export const fetchMovieDetail = async (id) => {
   try {
       const { data } = await axios.get(`${movieUrl}/${id}`, {
           params: {
-              api_key:'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key:`${process.env.REACT_APP_TMDB_KEY}`,
               language: 'en_US'
           }
       });
@@ -261,7 +261,7 @@ export const fetchMovieVideos = async (id) => {
   try {
       const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
           params: {
-              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key: `${process.env.REACT_APP_TMDB_KEY}`,
           }
       });
       return data['results'][0];
@@ -272,7 +272,7 @@ export const fetchCasts = async (id) => {
   try {
       const { data } = await axios.get(`${movieUrl}/${id}/credits`, {
           params: {
-              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key: `${process.env.REACT_APP_TMDB_KEY}`,
           }
       });
       const modifiedData = data['cast'].map((c) => ({
@@ -290,7 +290,7 @@ export const fetchSimilarMovie = async (id) => {
   try {
       const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
           params: {
-              api_key:'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              api_key:`${process.env.REACT_APP_TMDB_KEY}`,
               language: 'en_US'
           }
       });
@@ -313,7 +313,7 @@ export const fetchPersons = async () => {
   try {
       const { data } = await axios.get(personUrl, {
           params: {
-              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1'
+              api_key: `${process.env.REACT_APP_TMDB_KEY}`
           }
       })
       const modifiedData = data['results'].map((p) => ({
@@ -322,6 +322,7 @@ export const fetchPersons = async () => {
           name: p['name'],
           profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
           known: p['known_for_department']
+
       }))
       return modifiedData;
   } catch (error) { }

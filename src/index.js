@@ -20,6 +20,7 @@ import MovieVideoPage from './pages/movievideoPage';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PlayervideoPage from './pages/videoPlayerPage';
 import TvPage from "./pages/tvDetailsPage";
+import Trendingpersonspage from "./pages/trendingPersonsPage";
 
 
 const queryClient = new QueryClient({
@@ -52,6 +53,7 @@ const App = () => {
       <Route exact path="/" component={HomePage} />
       <Route path="/reviews/:id" component={MovieReviewPage} />
       <Route path="/movie/video" component={MovieVideoPage} />
+      <Route path="/trendingpersons" component={Trendingpersonspage} />
       <Route exact path="/reviews/form" component={AddMovieReviewPage} />
     
       <Redirect from="*" to="/" />

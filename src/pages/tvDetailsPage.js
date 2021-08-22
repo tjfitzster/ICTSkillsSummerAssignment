@@ -1,9 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import MovieDetails from "../components/movieDetails";
-import PageTemplate from "../components/templateMoviePage";
+import TvDetails from "../components/tvDetails";
 import TvPageTemplate from "../components/templateTvPage";
-import { getMovie } from '../api/tmdb-api'
 import { getTvShow } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
@@ -27,9 +25,7 @@ const TvDetailsPage = (props) => {
       {tvshow ? (
         <>
           <TvPageTemplate tvshow={tvshow}>
-            <h1>HELLO WORLD</h1>
-          {/*  <MovieDetails movie={tvshow} /> */}
-          
+          <TvDetails tvshow={tvshow} /> 
           </TvPageTemplate>
         </>
       ) : (

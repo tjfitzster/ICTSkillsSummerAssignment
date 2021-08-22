@@ -2,15 +2,17 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
+import TvPageTemplate from "../components/templateTvPage";
 import { getMovie } from '../api/tmdb-api'
+import { getTvShow } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 
-const MovieDetailsPage = (props) => {
+const TvDetailsPage = (props) => {
   const { id } = props.match.params;
-  const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
-    getMovie
+  const { data: tvshow, error, isLoading, isError } = useQuery(
+    ["tv", { id: id }],
+    getTvShow
   );
   if (isLoading) {
     return <Spinner />;
@@ -22,11 +24,13 @@ const MovieDetailsPage = (props) => {
   
   return (
     <>
-      {movie ? (
+      {tvshow ? (
         <>
-          <PageTemplate movie={movie}>
-            <MovieDetails movie={movie} />
-          </PageTemplate>
+          <TvPageTemplate tvshow={tvshow}>
+            <h1>HELLO WORLD</h1>
+          {/*  <MovieDetails movie={tvshow} /> */}
+          
+          </TvPageTemplate>
         </>
       ) : (
         <p>Waiting for movie details</p>
@@ -35,4 +39,4 @@ const MovieDetailsPage = (props) => {
   );
 };
 
-export default withRouter(MovieDetailsPage);
+export default withRouter(TvDetailsPage);

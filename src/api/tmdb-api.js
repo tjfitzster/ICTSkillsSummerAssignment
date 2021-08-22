@@ -75,6 +75,17 @@ export const getMovie = async ( args ) => {
   }
   return response.json();
 };
+
+export const getTvShow = async ( args ) => {
+  const [prefix, { id }] = args.queryKey;
+  const response = await fetch(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  );
+  if (!response.ok) {
+    throw new Error(response.json().message);
+  }
+  return response.json();
+};
   
   export const getGenres = async () => {
     const response = await  fetch(
@@ -89,10 +100,21 @@ export const getMovie = async ( args ) => {
   };
   
   export const getMovieImages = async ({queryKey}) => {
-    // eslint-disable-next-line no-unused-vars
     const [prefix, { id }] = queryKey;
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  };
+
+   
+  export const getTvImages = async ({queryKey}) => {
+    const [prefix, { id }] = queryKey;
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
     )
     if (!response.ok) {
       throw new Error(response.json().message);
@@ -224,3 +246,74 @@ export const fetchMovieDetail = async (id) => {
       return data;
   } catch (error) { }
 }
+
+export const fetchMovieVideos = async (id) => {
+  try {
+      const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
+          params: {
+              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+          }
+      });
+      return data['results'][0];
+  } catch (error) { }
+}
+
+export const fetchCasts = async (id) => {
+  try {
+      const { data } = await axios.get(`${movieUrl}/${id}/credits`, {
+          params: {
+              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+          }
+      });
+      const modifiedData = data['cast'].map((c) => ({
+          id: c['cast_id'],
+          character: c['character'],
+          name: c['name'],
+          img: 'https://image.tmdb.org/t/p/w200' + c['profile_path'],
+      }))
+
+      return modifiedData;
+  } catch (error) { }
+}
+
+export const fetchSimilarMovie = async (id) => {
+  try {
+      const { data } = await axios.get(`${movieUrl}/${id}/similar`, {
+          params: {
+              api_key:'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              language: 'en_US'
+          }
+      });
+      const posterUrl = 'https://image.tmdb.org/t/p/original/';
+      const modifiedData = data['results'].map((m) => ({
+          id: m['id'],
+          backPoster: posterUrl + m['backdrop_path'],
+          popularity: m['popularith'],
+          title: m['title'],
+          poster: posterUrl + m['poster_path'],
+          overview: m['overview'],
+          rating: m['vote_average'],
+      }))
+
+      return modifiedData;
+  } catch (error) { }
+}
+
+export const fetchPersons = async () => {
+  try {
+      const { data } = await axios.get(personUrl, {
+          params: {
+              api_key: 'e78ce8d6f8fd74b6fcf1433d7b690ec1'
+          }
+      })
+      const modifiedData = data['results'].map((p) => ({
+          id: p['id'],
+          popularity: p['popularity'],
+          name: p['name'],
+          profileImg: 'https://image.tmdb.org/t/p/w200' + p['profile_path'],
+          known: p['known_for_department']
+      }))
+      return modifiedData;
+  } catch (error) { }
+}
+

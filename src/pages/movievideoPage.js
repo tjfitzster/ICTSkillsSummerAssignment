@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {fetchMovies, fetchGenre, fetchMovieByGenre} from '../api/tmdb-api'
+import {fetchMovies, fetchGenre, fetchMovieByGenre, fetchPersons} from '../api/tmdb-api';
 import RBCarousel from 'react-bootstrap-carousel';
 import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
 import { Link } from "react-router-dom";
@@ -9,11 +9,14 @@ const MovieVideoPage = (props) => {
     const [nowPlaying, setNowPlaying] = useState ([]); /* Setting up state hooks */
     const [genres, setGenres]  = useState ([]);  /* Setting up state hooks */
     const [movieByGenre, setMovieByGenre] = useState([]);
+    const [persons, setPersons] = useState([]);
+   
     useEffect(() => {
 
         const fetchAPI = async () => {
             setNowPlaying(await fetchMovies()); /* Fetching Now Playing API */
             setGenres(await fetchGenre());  /* Fetching Gebres API*/
+            setPersons(await fetchPersons());
             setMovieByGenre(await fetchMovieByGenre());
         };
         
@@ -76,6 +79,25 @@ const MovieVideoPage = (props) => {
         
         });
 
+        const trendingPersons = persons.slice(0, 15).map((item, index) => {
+            return (
+              <div className="col-md-3 text-center" key={index}>
+                <img
+                  className="img-fluid rounded-circle mx-auto d-block"
+                  src={item.profileImg}
+                  alt={item.name}
+                ></img>
+                <p className="font-weight-bold text-center">{item.name}</p>
+                <p
+                  className="font-weight-light text-center"
+                  style={{ color: "#5a606b" }}
+                >
+                  Trending for {item.known}
+                </p>
+              </div>
+            );
+          });
+
     return(
         <div className="container"> {/* Setting the Carosel up */}
             <div className="row" mt-2>
@@ -97,12 +119,10 @@ const MovieVideoPage = (props) => {
                     </ul>
                     </div>
             </div>
-
             <div className="row at 3"> 
-             
-                        {movieList}
-                    
+                        {movieList}  
                 </div>
+                <div className="row at 3"> {trendingPersons} </div>
             
         </div>
         )

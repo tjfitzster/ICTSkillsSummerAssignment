@@ -59,21 +59,22 @@ const MovieVideoPage = (props) => {
         )
     });
 
-    const movieList = movieByGenre.slice(0,16).map((item, index) => {
+    const movieList = movieByGenre.slice(0,8).map((item, index) => {
         return (
             <div className="col-md-3 col-se-6"key={{index}}> 
                     <div className="card">
-                    <Link to={`/movie/${item.id}`}>
+                    <Link to={`/video/${item.id}`}>
                         <img className="img-fluid" src={item.poster} alt={item.title}></img>
                     </Link>
                     </div>
-                
-            </div>
-        
-        
+                    <div className="mt-3">
+                  <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+                  <p>Rated: {item.rating}</p>
+                </div>
+            </div>      
         )
         
-        }); 
+        });
 
     return(
         <div className="container"> {/* Setting the Carosel up */}

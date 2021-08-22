@@ -18,7 +18,7 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import MovieVideoPage from './pages/movievideoPage';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import PlayervideoPage from './pages/videoPlayerPage';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -44,6 +44,7 @@ const App = () => {
       <Route exact path="/movies/latest" component={LatestMoviesPage} />
       <Route exact path="/movies/upcoming" component={upcomingMoviesPage} />
       <Route path="/movies/:id" component={MoviePage} />
+      <Route path="/video/:id" component={PlayervideoPage} />
       <Route exact path="/" component={HomePage} />
       <Route path="/reviews/:id" component={MovieReviewPage} />
       <Route path="/movie/video" component={MovieVideoPage} />

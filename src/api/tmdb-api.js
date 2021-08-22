@@ -211,3 +211,16 @@ export const fetchMovieByGenre = async (genre_id) => {
       return modifiedData;
   } catch (error) { }
 }
+
+
+export const fetchMovieDetail = async (id) => {
+  try {
+      const { data } = await axios.get(`${movieUrl}/${id}`, {
+          params: {
+              api_key:'e78ce8d6f8fd74b6fcf1433d7b690ec1',
+              language: 'en_US'
+          }
+      });
+      return data;
+  } catch (error) { }
+}

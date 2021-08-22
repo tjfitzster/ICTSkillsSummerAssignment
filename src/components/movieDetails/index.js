@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from "../movieReviews"
+import {fetchCasts} from '../../api/tmdb-api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,9 +31,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieDetails = ({ movie }) => { 
+const MovieDetails = ({ movie, match }) => { 
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+
 
   return (
     <>
@@ -88,6 +91,7 @@ const MovieDetails = ({ movie }) => {
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
+
       </>
   );
 };

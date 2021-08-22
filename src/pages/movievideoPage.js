@@ -24,7 +24,7 @@ const MovieVideoPage = (props) => {
     }, []);
 
     const handleGenreClick = async (genre_id) => {
-        setMovieByGenre(await fetchMovieByGenre(genre_id));
+        setMovieByGenre(await fetchMovieByGenre(genre_id)); /* ON Click Event that determines the movies that are displayed with video */
       };
 
     const movies = nowPlaying.slice(0,10).map((item, index) => {
@@ -48,17 +48,15 @@ const MovieVideoPage = (props) => {
     const genreList = genres.map((item, index) => {
         return (
            <li className="list-inline-item" key={{index}}> 
-
                 <button
-          type="button"
-          className="btn btn-outline-info"
-          onClick={() => {
-            handleGenreClick(item.id);
-          }}
-        >
+                    type="button"
+                    className="btn btn-outline-info"
+                    onClick={() => {
+                      handleGenreClick(item.id);
+                                  }}>
                     {item.name}
                 </button>
-                </li>
+          </li>
         )
     });
 
@@ -66,12 +64,12 @@ const MovieVideoPage = (props) => {
         return (
             <div className="col-md-3 col-se-6"key={{index}}> 
                     <div className="card">
-                    <Link to={`/video/${item.id}`}>
-                        <img className="img-fluid" src={item.poster} alt={item.title}></img>
+                    <Link to={`/video/${item.id}`}> {/* Setting the video player*/}
+                        <img className="img-fluid" src={item.poster} alt={item.title}></img>   
                     </Link>
                     </div>
                     <div className="mt-3">
-                  <p style={{ fontWeight: "bolder" }}>{item.title}</p>
+                  <p style={{ fontWeight: "bold" }}>{item.title}</p>
                   <p>Rated: {item.rating}</p>
                 </div>
             </div>      
@@ -103,11 +101,11 @@ const MovieVideoPage = (props) => {
             <div className="row" mt-2>
                 <div className="col"> 
                     <RBCarousel
-                    autoplay={true}
-                    pauseOnVisibility={true}
-                    slideshowSpeed={5000}
-                    version={4}
-                    indicatiors={false}>
+                        autoplay={true}
+                        pauseOnVisibility={true}
+                        slideshowSpeed={5000}
+                        version={4}
+                        indicatiors={false}>
                     {movies}
                     </RBCarousel>
                 </div>
@@ -122,11 +120,12 @@ const MovieVideoPage = (props) => {
             <div className="row at 3"> 
                         {movieList}  
                 </div>
+                <hr></hr>
+                <h3> Trending persons </h3>
                 <div className="row at 3"> {trendingPersons} </div>
             
         </div>
         )
-
   };
   
   export default MovieVideoPage;

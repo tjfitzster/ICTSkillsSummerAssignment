@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import {fetchMovies, fetchGenre} from '../api/tmdb-api'
+import {fetchMovies, fetchGenre, fetchMovieByGenre} from '../api/tmdb-api'
 import RBCarousel from 'react-bootstrap-carousel';
 import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
+import { Link } from "react-router-dom";
 
 const MovieVideoPage = (props) => {
 
     const [nowPlaying, setNowPlaying] = useState ([]); /* Setting up state hooks */
     const [genres, setGenres]  = useState ([]);  /* Setting up state hooks */
-
+    const [movieByGenre, setMovieByGenre] = useState([]);
     useEffect(() => {
 
         const fetchAPI = async () => {
             setNowPlaying(await fetchMovies()); /* Fetching Now Playing API */
             setGenres(await fetchGenre());  /* Fetching Gebres API*/
+            setMovieByGenre(await fetchMovieByGenre());
         };
         
          fetchAPI();
     }, []);
 
-    const movies = nowPlaying.slice(0,5).map((item, index) => {
+    const movies = nowPlaying.slice(0,10).map((item, index) => {
 
         return(
            <div style = {{ height: "500", width: "100"}} key={index}>
@@ -29,7 +31,6 @@ const MovieVideoPage = (props) => {
                     <i className="fas fa-play-circle" style={{fontSize: 95, color:'#f4c10f'}}> {/* Setting UP The Play Button*/}
                      </i> 
                     </div>
-    
                     <div className="carousel-caption" style={{textAlign:'center', fontSize: 35}}> {/* Setting the movie Test up*/}
                         {item.title}
                     </div>
@@ -46,6 +47,22 @@ const MovieVideoPage = (props) => {
                 </li>
         )
     });
+
+    const movieList = movieByGenre.slice(0,16).map((item, index) => {
+        return (
+            <div className="col-md-3 col-se-6"key={{index}}> 
+                    <div className="card">
+                    <Link to={`/movie/${item.id}`}>
+                        <img className="img-fluid" src={item.poster} alt={item.title}></img>
+                    </Link>
+                    </div>
+                
+            </div>
+        
+        
+        )
+        
+        }); 
 
     return(
         <div className="container"> {/* Setting the Carosel up */}
@@ -66,11 +83,16 @@ const MovieVideoPage = (props) => {
                     <ul className="list-inline">
                         {genreList}
                     </ul>
-
-                </div>
+                    </div>
             </div>
+
+            <div className="row at 3"> 
+             
+                        {movieList}
+                    
+                </div>
+            
         </div>
-        
         )
 
   };

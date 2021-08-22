@@ -20,6 +20,10 @@ const MovieVideoPage = (props) => {
          fetchAPI();
     }, []);
 
+    const handleGenreClick = async (genre_id) => {
+        setMovieByGenre(await fetchMovieByGenre(genre_id));
+      };
+
     const movies = nowPlaying.slice(0,10).map((item, index) => {
 
         return(
@@ -41,7 +45,14 @@ const MovieVideoPage = (props) => {
     const genreList = genres.map((item, index) => {
         return (
            <li className="list-inline-item" key={{index}}> 
-                <button type="button" className="btn btn-outline-info">
+
+                <button
+          type="button"
+          className="btn btn-outline-info"
+          onClick={() => {
+            handleGenreClick(item.id);
+          }}
+        >
                     {item.name}
                 </button>
                 </li>
@@ -68,14 +79,14 @@ const MovieVideoPage = (props) => {
         <div className="container"> {/* Setting the Carosel up */}
             <div className="row" mt-2>
                 <div className="col"> 
-                <RBCarousel
-                autoplay={true}
-                pauseOnVisibility={true}
-                slideshowSpeed={5000}
-                version={4}
-                indicatiors={false}>
+                    <RBCarousel
+                    autoplay={true}
+                    pauseOnVisibility={true}
+                    slideshowSpeed={5000}
+                    version={4}
+                    indicatiors={false}>
                     {movies}
-                </RBCarousel>
+                    </RBCarousel>
                 </div>
             </div>
             <div className="row at 3"> 

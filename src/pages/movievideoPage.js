@@ -60,7 +60,7 @@ const MovieVideoPage = (props) => {
         )
     });
 
-    const movieList = movieByGenre.slice(0,8).map((item, index) => {
+    const movieList = movieByGenre.slice(0,20).map((item, index) => {
         return (
             <div className="col-md-3 col-se-6"key={{index}}> 
                     <div className="card">

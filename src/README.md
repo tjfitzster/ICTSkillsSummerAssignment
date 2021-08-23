@@ -1,13 +1,24 @@
 # Assignment - ReactJS app.
 
 Name: TJ FITZPATRICK
+Number: 20027865
 
 ## Overview.
 
-...... State the app concept and objectives. If it's the Movies Fan app extension, only state the additional objectives .........
+The purpose of this modle is to learn React through the development of a Movies application. 
+We had built a standard movie app in our labs, the assignment was then given to us to finish it off. 
+The characteristics of my submission include Reused / Repurposed component structure, UI style, and behaviour of the origional Movies fan application. 
+the properties included: UI - Dynamic and interactive;
+                          Routing - paramaterised URL.
+						  Datamodel with 2 entity types. 9I actually have more than just 2 endpoints)
+						  I have no storey book support submitted for grading. 
+						  I do have proof though that I am able to research and search and learn myself as I learned to smaller appplications through tutorials online. 
+						  https://www.freecodecamp.org/news/react-movie-app-tutorial/
+						  https://dev.to/tkbraincodes/building-a-react-movie-application-2f55
+						  https://reactjsexample.com/tag/movies/
 
 
-...... A bullet-point list of user features. If it's the Movies Fan app extension, only list new/modified features...... 
+...... The follThat I am submitting has the following features... 
  
  + Feature 1
  + Feature 2

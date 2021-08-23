@@ -18,17 +18,18 @@ the properties included: UI - Dynamic and interactive;
 						  https://reactjsexample.com/tag/movies/
 
 
-...... The follThat I am submitting has the following features... 
+...... The I am submitting has the following features... 
  
- + Feature 1
- + Feature 2
- + Feature 3
- + etc
- + etc
+ + Feature 1 : These are simple API changes, and they allow me to new pages 'Upcoming Movies', 'Now in Theatres', 'Top Rated Movies', 'Popular Movies' all I change in the api is a key word for example 'Popular' to 'latest'.
+ + Feature 2 : This feature is where I brought in the Tv shows, I had to create 6 copies of movies cards, and change key words in them to reflect tv shows, so for example we have a tv card that calls an tv 'show name', rather than a movie 'title'.
+ + Feature 3 : This feature is going to be a trending persons feature, its a simple APi that calls for the top 2- trending peiople, I jsut display them in a table, their image and what they are trending for. 
+ + Feature 4 : This is the movies with video page, the first feature is the carousel, it jsut displays the Top movies images, and loops over them, at the time of writing this I have it set to 8. 
+ was amazed and suprised how smple it was to impliment, I was goign to  try impliment it in the tv shows also but jsut had to be mindful of time. 
+  + Feature 5 : This is brillent, I love the way how simple it is usign a reaact player, and playing youtube videos, this is a paramaeterised Url that is passed the movies ID and the query is sent to the tmdb discover video database. 
 
 ## Setup requirements.
 
-...... A brief explanation (to a third party) of any non-standard setup steps necessary to run your app/client locally (after cloning the repo) ........
+You need an api key for font awsome, and put this in you css file for reference. 
 
 ## API Data Model.
 

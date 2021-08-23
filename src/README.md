@@ -31,6 +31,7 @@ the properties included: UI - Dynamic and interactive;
 
 You need an api key for font awsome, and put this in you css file for reference. 
 
+
 ## API Data Model.
 
 ..... [For non-Movies Fan app] Insert a diagram of the API's data model (see example below) AND/OR a sample(s) of the JSON documents returned by its endpoints ........
@@ -38,6 +39,32 @@ You need an api key for font awsome, and put this in you css file for reference.
 ![][model]
 
 ......[For the Movies Fan app] Specify the additional TMDB endpoints used and show sample responses, in JSON .........
+getMovies
+getlatestMovies
+getTopRatedMovies
+getPopularTV
+getMovie
+getGenres
+getMovieImages
+getTvImages
+getMovieCredits
+getUpcomingMovies
+getMovieReviews
+getTvReviews
+nowPlayingMovies
+fetchGenre
+fetchMovieByGenre
+fetchMovieDetail
+fetchMovieVideos
+fetchCasts
+fetchSimilarMovie
+fetchPersons
+
+The tv show api returning data:
+https://user-images.githubusercontent.com/49097329/130524845-13b2e90a-1b30-4de3-9242-fd2876273854.png
+
+
+
 
 ## App Design.
 

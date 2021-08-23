@@ -58,16 +58,25 @@ You need an api key for font awsome, and put this in you css file for reference.
 
 ...... Insert a list of the routes supported by your app and state the associated view. If relevant, specify which of the routes require authentication, i.e. protected/private. [For the Movies Fan app, only new routes should be listed.] ......... 
 
-+ GET /blogs - displays all published blogs.
-+ POST /blogs (protected) - add a new blog.
-+ GET /blogs/:id - displays a particular blog.
-+ GET /blogs/:id/comments (protected) - detail view of a particular blog and its comments.
-+ etc.
-+ etc.
++ GET  <Route exact path="/movies/popular" component={PopularMoviesPage} />
++ GET  <Route exact path="/tv/popular" component={PopulartvPage} />
++ GET <Route exact path="/movies/toprated" component={TopratedMoviesPage} />
++ GET   <Route exact path="/movies/latest" component={LatestMoviesPage} />
++ GET  <Route path="/tv/:id" component={TvPage} />
++ GET <Route path="/video/:id" component={PlayervideoPage} />
++ GET  <Route path="/movie/video" component={MovieVideoPage} />>
++ GET <Route path="/trendingpersons" component={Trendingpersonspage} />
 
 ## Independent learning (If relevant).
 
-....... Briefly state any technologies/techniques used in your project codebase that was not covered in the lectures/labs. Provide source code filename (source code excerpts are not required in most cases) references to support your assertions and include references (articles/blogs) ......... 
+Independat learning was shown on the 'Movies with video page' and 'trending persons page' 
+Movie with video page: https://user-images.githubusercontent.com/49097329/130523795-ae276cf9-4dee-46e7-a9ba-1032a4d651b8.png
+Video player: https://user-images.githubusercontent.com/49097329/130523856-011bde5c-49f3-4d97-a10a-3b8c06ae55ac.png
+
+
+
+I used tutorials to teach mypleasf about the player,, the carousel, the javascrt on click function I knew already, i just applied it to this. 
+ 
 
 
 [model]: ./data.jpg
